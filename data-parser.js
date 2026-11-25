@@ -2,7 +2,7 @@
 'use strict';
 const LANGUAGES=['JavaScript','TypeScript','Python','C++','C#','C','Java','Go','Rust','Ruby','PHP','Swift','Kotlin','Objective-C','Scala','Dart','Perl','Lua','Haskell','Elixir','Erlang','Clojure','Bash','Shell','PowerShell','SQL','Julia','Zig','OCaml','Fortran','MATLAB','Solidity','Assembly','HTML','CSS','R','F#','Visual Basic','Groovy','Crystal','Nim','V','Verilog','VHDL','WebAssembly','React','Node.js','Tcl','Prolog','Scheme','Common Lisp','Ada','Pascal','Delphi','Cobol','Lisp','Pony','Elm','Svelte','Vue','Angular'];
 const aliases={'js':'JavaScript','ts':'TypeScript','py':'Python','cpp':'C++','cxx':'C++','cs':'C#','golang':'Go','rb':'Ruby','rs':'Rust','kt':'Kotlin','sh':'Shell','bash':'Bash','ps':'PowerShell','node':'Node.js'};
-function escapeRegex(s){return s.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&');}
+function escapeRegex(s){return s.replace(/[.+*?^$(){}|\\[\\]\\\\]/g,'\\\\function escapeRegex(s){return s.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&');}');}
 function detectLanguage(text){
  const t=String(text||'').replace(/[*_`]/g,'');const low=t.toLowerCase();
  for(const [a,l] of Object.entries(aliases)){if(new RegExp('(^|[^a-z0-9])'+escapeRegex(a)+'([^a-z0-9]|$)','i').test(low))return l;}
