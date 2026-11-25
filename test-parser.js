@@ -2,12 +2,12 @@ const assert=require('node:assert/strict');
 const {parse,detectLanguage,languages}=require('./data-parser.js');
 const sample=`# title
 ## Tutorials
-#### Build your own `Database`
+#### Build your own \`Database\`
 * [**Go**: _Build Your Own Database from Scratch_](https://db.test/)
 * [**C++**: _Simple Database_](https://cpp.test/)
-#### Build your own `Shell`
+#### Build your own \`Shell\`
 * [**Bash**: _Build a shell_](https://shell.test/)
-#### Build your own `AI Model`
+#### Build your own \`AI Model\`
 * [**Python**: _A Large Language Model_](https://ai.test/)
 ## Contribute
 [issue](https://issues.test)`;
@@ -15,5 +15,5 @@ const p=parse(sample);assert.equal(p.length,3);assert.equal(p[0].name,'Build you
 for(const [input,expected] of [['TypeScript build','TypeScript'],['Build with Java','Java'],['golang service','Go'],['cpp project','C++'],['Rust project','Rust'],['bash script','Bash'],['Node.js app','Node.js'],['No language here','Not specified']])assert.equal(detectLanguage(input),expected,input);
 assert.ok(languages.length>=50,'language coverage list should be broad');
 assert.equal(parse('[outside heading](https://x.test)').length,0);
-assert.equal(parse('## Contribute\n[issue](https://issues.test)').length,0);
+assert.equal(parse('## Contribute\\n[issue](https://issues.test)').length,0);
 console.log('Parser tests passed');
